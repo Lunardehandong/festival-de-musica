@@ -1,0 +1,108 @@
+@use '../../variables' as v;
+@use '../mixing' as m;
+
+.galeria{
+@include m.contenedor;
+
+    &-imagenes{
+        @include m.grid(1, 2rem);
+
+        @include m.telefono{
+            @include m.grid(2, 2rem);
+        }
+
+        @include m.tablet{
+            @include m.grid(3, 2rem);
+        }
+
+        @include m.desktop{
+            @include m.grid(4, 2rem);
+        }
+
+        img{
+            height: 20rem;
+            object-fit: cover;
+        }
+    }
+}
+
+.modal {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.8);
+
+    display: grid;
+    place-items: center;
+
+    z-index: 1000;
+
+    img {
+        width: 80rem;
+        max-width: 90%;
+        max-height: 90vh;
+        object-fit: contain;
+    }
+
+    // Botón para cerrar
+    &-cerrar {
+        position: absolute;
+        top: 2rem;
+        right: 2rem;
+
+        width: 4rem;
+        height: 4rem;
+
+        border: none;
+        border-radius: 50%;
+
+        background-color: v.$blanco;
+        color: v.$negro;
+
+        font-size: 3rem;
+        line-height: 1;
+
+        cursor: pointer;
+
+        &:hover {
+            background-color: v.$rosa;
+            color: v.$blanco;
+        }
+    }
+
+    // Botones anterior y siguiente
+    &-anterior,
+    &-siguiente {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+
+        width: 5rem;
+        height: 5rem;
+
+        border: none;
+        border-radius: 50%;
+
+        background-color: v.$blanco;
+        color: v.$negro;
+
+        font-size: 3rem;
+        line-height: 1;
+
+        cursor: pointer;
+
+        &:hover {
+            background-color: v.$rosa;
+            color: v.$blanco;
+        }
+    }
+
+    // Flecha izquierda
+    &-anterior {
+        left: 3rem;
+    }
+
+    // Flecha derecha
+    &-siguiente {
+        right: 3rem;
+    }
+}
